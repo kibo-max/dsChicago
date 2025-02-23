@@ -1,0 +1,99 @@
+# Chicago Car Crashes Analysis
+
+## Overview
+This project aims to reduce accidents and improve road safety through in-depth analysis of the Chicago Car Crashes dataset. The goal is to identify high-risk locations and understand contributing factors, enabling more effective allocation of resources and informed decision-making for stakeholders.
+
+## Business and Data Understanding
+
+### Business Problem
+Road safety is a critical concern in Chicago, with a high number of crashes occurring due to various factors, including driver behavior, road conditions, and environmental influences. Understanding these factors is essential for implementing effective safety measures and reducing accident rates.
+
+### Objectives
+- Provide actionable insights for informed decision-making on road safety policies and resource allocation.
+- Examine the severity of accidents and injuries.
+- Analyze time trends across different scales—hours, weeks, months, and years.
+- Assess the impact of weather and lighting conditions on crash occurrences.
+- Evaluate driver behavior and road conditions.
+- Conduct geospatial analysis of crash locations.
+
+### Key Stakeholders
+- **City Traffic and Safety Departments**: Responsible for policy-making and road safety improvements.
+- **Emergency Responders**: Need insights into high-risk zones for better preparedness.
+- **Urban Planners**: Use crash data for designing safer road infrastructure.
+- **General Public and Drivers**: Benefit from increased awareness of high-risk areas and safer driving practices.
+
+### Data Source
+- **Primary Source:** [Chicago Traffic Crashes Dataset](https://data.cityofchicago.org/d/aerh-rz74)
+- **Dataset Details:**
+  - 48 columns, 109,094 rows.
+  - Mixed data types: numerical (e.g., injury counts, speeding), categorical (e.g., crash severity levels, contributing factors), datetime (e.g., crash date and time), geospatial (e.g., latitude and longitude coordinates).
+- **Limitations:**
+  - High percentage of missing values in some columns.
+  - Large dataset making some models (e.g., KNN) computationally expensive.
+
+## Methodology
+1. **Data Collection:**
+   - Data stored in CSV format for structured querying.
+2. **Data Cleaning & Preprocessing:**
+   - Used Pandas for manipulation, cleaning, and transformation.
+3. **Exploratory Data Analysis (EDA):**
+   - Generated insightful visualizations using Seaborn, Tableau, and Matplotlib.
+4. **Modeling:**
+   - Implemented models: Logistic Regression, Decision Tree, Random Forest, Ensemble, XGBoost, and LightGBM.
+5. **Implementation:**
+   - Workflow executed using Jupyter Notebook and Tableau worksheets for interactive data exploration and visualization.
+
+## Evaluation
+
+### Key Insights
+- **Class Distribution of Injury Severity:**
+  - 86.5% of cases had no injuries, while only 0.14% were fatal.
+  - The dataset is highly imbalanced, making rare fatal accidents harder to detect.
+
+- **Crash Frequency Trends:**
+  - **By Hour:** Peak crashes occur between 3 PM - 5 PM, coinciding with rush hours.
+  - **By Day:** Highest crashes occur on Fridays and Saturdays, likely due to increased social activities and traffic.
+  - **By Month:** October recorded the highest number of crashes.
+
+- **Lighting & Weather Conditions:**
+  - Most crashes happen in daylight due to higher traffic volume.
+  - Adverse weather (rain/snow) has fewer crashes but potentially higher severity.
+
+- **Primary & Secondary Causes:**
+  - Primary causes: Failure to yield, following too closely, failing to reduce speed, and improper backing.
+  - Secondary causes: Distractions and reckless driving, highlighting human error as a major factor.
+
+- **Road & Traffic Conditions:**
+  - Most crashes occur on dry roads due to high traffic.
+  - Top crash-prone streets include major roads like Western Avenue.
+
+### Model Performance
+- **Class Imbalance Issue:**
+  - Without resampling, models struggled to detect injury-related crashes.
+  - SMOTE (Synthetic Minority Over-sampling Technique) improved recall for minority injury cases.
+
+- **Best Model Comparison:**
+  - **Logistic Regression:** F1-score ~0.922, Accuracy ~91.7%
+  - **Random Forest:** F1-score ~0.923, Accuracy ~91.9%
+  - **XGBoost & LightGBM:** Nearly identical performance with ~89% accuracy and high F1-scores (0.93 for critical injury cases).
+
+- **Key Findings from Confusion Matrices:**
+  - Models performed well in identifying "No Injury" cases (~98% recall) but struggled with "Injury" cases (~63% recall before balancing).
+  - Resampling techniques (SMOTE) helped improve minority class recall, leading to better-balanced predictions.
+
+- **Feature Importance:**
+  - `Injuries_total` and `Damage` were the strongest predictors.
+  - Road conditions and weather had moderate influence, while driver behavior factors played a key role in crash outcomes.
+
+## Conclusion & Recommendations
+- Implement better road safety policies targeting high-risk areas.
+- Improve traffic control measures during peak hours and high-risk days.
+- Enhance driver education programs on common crash causes.
+- Consider environmental factors (weather, lighting) in urban planning.
+- Address class imbalance in future predictive modeling by incorporating resampling techniques.
+
+---
+
+**QUESTIONS AND ANSWERS?**
+
+**THANK YOU!**
